@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwapservice
+spec:
+  selector:
+    matchLabels:
+      app: dvwapservice
+  template:
+    metadata:
+      labels:
+        app: dvwapservice
+    spec:
+      containers:
+      - name: server
+        image: ipirva/dvwa:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 200m
+            memory: 180Mi
+          limits:
+            cpu: 300m
+            memory: 300Mi
